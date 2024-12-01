@@ -3,11 +3,12 @@
 #include<string.h>
 #include<stdbool.h>
 
+
 typedef struct Node {
     char key;            
     int value;           
     struct Node* prev;    
-    struct Node* next;    
+    struct Node* next;   
 } Node;
 
 
@@ -29,14 +30,14 @@ void restockItem(Node* head, char restock_key, int restock_amount) {
     Node* temp = head;
     while (temp != NULL) {
         if (temp->key == restock_key) {
-            temp->value += restock_amount;
+            temp->value += restock_amount; 
             printf("Barang %c berhasil ditambahkan. Jumlah sekarang: %d\n", temp->key, temp->value);
             return; 
         }
         temp = temp->next;
     }
 
-   
+
     printf(" Barang %c tidak ditemukan dalam gudang.\n", restock_key);
 }
 
@@ -90,7 +91,6 @@ void displayBackward(Node* head) {
     printf("\n");
 }
 
-
 void deleteNode(Node** head, char key) {
     Node* temp = *head;
 
@@ -100,7 +100,7 @@ void deleteNode(Node** head, char key) {
     }
 
     if (temp == NULL) {
-        printf("Node with key '%c' not found.\n", key);
+        printf("Barang '%c' Tidak ditemukan.\n", key);
         return;
     }
 
@@ -114,10 +114,8 @@ void deleteNode(Node** head, char key) {
         temp->next->prev = temp->prev;
 
     free(temp);
-    printf("Node with key '%c' deleted.\n", key);
+    printf("Barang '%c' telah di hapus.\n", key);
 }
-
-
 
 void admincheck(const char* username, const char* password, char* ptr) {
     char temp_username[15];
@@ -129,7 +127,7 @@ void admincheck(const char* username, const char* password, char* ptr) {
 
     printf("Masukan password anda: ");
     fgets(temp_pass, sizeof(temp_pass), stdin);
-    temp_pass[strcspn(temp_pass, "\n")] = '\0'; 
+    temp_pass[strcspn(temp_pass, "\n")] = '\0';
 
     // Compare strings
     if (strcmp(temp_username, username) == 0) {
@@ -220,9 +218,8 @@ int main() {
                         case 3:
                             char item_del ; 
                             printf ("\n <=======  Menghapus barang yang ingin Dihapus  =======> \n");
-                            displayForward(head);
-                            printf("Pilih Barang apa yang ingin Di Hapus ");
-                            scanf ("%c", &item_del); 
+                            printf("Pilih Barang apa yang ingin Di Hapus =  ");
+                            scanf(" %c", &item_del);
                             deleteNode(&head, item_del);
                             break;
 
