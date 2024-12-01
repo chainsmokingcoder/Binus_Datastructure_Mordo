@@ -3,17 +3,16 @@
 #include<string.h>
 #include<stdbool.h>
 
-// Define the structure for a doubly linked list node
 typedef struct Node {
-    char key;             // Character key
-    int value;            // Integer value
-    struct Node* prev;    // Pointer to the previous node
-    struct Node* next;    // Pointer to the next node
+    char key;            
+    int value;           
+    struct Node* prev;    
+    struct Node* next;    
 } Node;
 
 
 Node* createNode(char key, int value) {
-    Node* newNode = (Node*)malloc(sizeof(Node)); // Allocate memory
+    Node* newNode = (Node*)malloc(sizeof(Node)); 
     if (!newNode) {
         printf("Memory allocation failed!\n");
         exit(1);
@@ -30,14 +29,14 @@ void restockItem(Node* head, char restock_key, int restock_amount) {
     Node* temp = head;
     while (temp != NULL) {
         if (temp->key == restock_key) {
-            temp->value += restock_amount; // Add the restock amount
+            temp->value += restock_amount;
             printf("Barang %c berhasil ditambahkan. Jumlah sekarang: %d\n", temp->key, temp->value);
-            return; // Exit the function after updating
+            return; 
         }
         temp = temp->next;
     }
 
-    // If item is not found
+   
     printf(" Barang %c tidak ditemukan dalam gudang.\n", restock_key);
 }
 
@@ -109,7 +108,7 @@ void deleteNode(Node** head, char key) {
     if (temp->prev != NULL)
         temp->prev->next = temp->next;
     else
-        *head = temp->next; // Deleting the head node
+        *head = temp->next; 
 
     if (temp->next != NULL)
         temp->next->prev = temp->prev;
@@ -126,11 +125,11 @@ void admincheck(const char* username, const char* password, char* ptr) {
 
     printf("Masukan username anda: ");
     fgets(temp_username, sizeof(temp_username), stdin);
-    temp_username[strcspn(temp_username, "\n")] = '\0'; // Remove newline character
+    temp_username[strcspn(temp_username, "\n")] = '\0'; 
 
     printf("Masukan password anda: ");
     fgets(temp_pass, sizeof(temp_pass), stdin);
-    temp_pass[strcspn(temp_pass, "\n")] = '\0'; // Remove newline character
+    temp_pass[strcspn(temp_pass, "\n")] = '\0'; 
 
     // Compare strings
     if (strcmp(temp_username, username) == 0) {
@@ -259,7 +258,7 @@ int main() {
                     }
 
                     if (mode == 4) {
-                        break; // Break out of the inner loop to go back to 'L'
+                        break; 
                     }
                 }
                 break;
